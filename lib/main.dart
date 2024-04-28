@@ -15,5 +15,24 @@
 import 'package:flutter/material.dart';
 
 import 'app.dart';
+import 'register_screen.dart';
+import 'login.dart';
+import 'home.dart';
 
-void main() => runApp(const ShrineApp());
+void main() => runApp( ShrineApp());
+
+class ShrineApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Shrine',
+      // Tambahkan rute navigasi untuk halaman registrasi
+      initialRoute: '/register',
+      routes: {
+        '/register': (context) => RegisterScreen(), // Arahkan ke halaman registrasi
+        '/home': (context) => HomePage(), // Misalnya, halaman home yang ada di dalam file app.dart
+        '/login': (context) => LoginPage(),
+      },
+    );
+  }
+}
