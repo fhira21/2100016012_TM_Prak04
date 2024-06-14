@@ -23,7 +23,10 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Image.asset('assets/diamond.png'),
                 const SizedBox(height: 16.0),
-                const Text('SHRINE'),
+                Text(
+                  'SHRINE',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                  ),
               ],
             ),
             const SizedBox(height: 120.0),
@@ -32,7 +35,6 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _usernameController,
               decoration: const InputDecoration(
-                filled: true,
                 labelText: 'Username',
               ),
             ),
@@ -42,7 +44,6 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _passwordController,
               decoration: const InputDecoration(
-                filled: true,
                 labelText: 'Password',
               ),
               obscureText: true,
@@ -54,13 +55,21 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 // TODO: Add buttons (101)
                     // TODO: Add buttons (101)
-                    TextButton(
+                    ElevatedButton(
                       child: const Text('CANCEL'),
                       onPressed: () {
                         // TODO: Clear the text fields (101)
                         _usernameController.clear();
                         _passwordController.clear();
                       },
+                      style: ElevatedButton.styleFrom(
+                        iconColor: Theme.of(context).colorScheme.primary,
+                        backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                        elevation: 7.0,
+                        shape: const BeveledRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                        ),
+                      ),
                     ),
                     // TODO: Add an elevation to NEXT (103)
                     // TODO: Add a beveled rectangular border to NEXT (103)
@@ -70,9 +79,47 @@ class _LoginPageState extends State<LoginPage> {
                     // TODO: Show the next page (101)
                     Navigator.pushReplacementNamed(context, '/home');
                       },
+                      style: ElevatedButton.styleFrom(
+                        iconColor: Theme.of(context).colorScheme.primary,
+                        backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                        elevation: 7.0,
+                        shape: const BeveledRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                        ),
+                      ),
                     ),
               ],
             ),
+            Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Belum punya akun?',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  SizedBox(width: 8.0), // Jarak antara judul dan tombol "Sign Up"
+                  GestureDetector(
+                    onTap: () {
+                      // Navigasi ke halaman login ketika tombol "Sign Up" ditekan
+                      Navigator.pushReplacementNamed(context, '/register');
+                    },
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           ],
         ),
       ),

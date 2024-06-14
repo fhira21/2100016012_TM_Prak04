@@ -8,7 +8,7 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(
         leading: Image.asset('assets/diamond.png'), // Gunakan Image.asset() untuk menampilkan logo dari assets
         title: Text('Shrine'),
-        backgroundColor: Color.fromARGB(255, 38, 172, 235), 
+        backgroundColor: Color.fromARGB(255, 142, 86, 182), 
       ),
       body: RegisterForm(),
     );

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'home.dart';
+import 'home6.dart';
 import 'login.dart';
+import 'colors.dart';
+import 'supplemental/cut_corners_border.dart';
 
 // TODO: Convert ShrineApp to stateful widget (104)
 class ShrineApp extends StatelessWidget {
@@ -10,7 +13,7 @@ class ShrineApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Prak 4&5',
+      title: 'Prak 4, 5 dan 6',
       initialRoute: '/login',
       routes: {
         '/login': (BuildContext context) => const LoginPage(),
@@ -21,10 +24,6 @@ class ShrineApp extends StatelessWidget {
         // TODO: Change backLayer field value to CategoryMenuPage (104)
       },
       // TODO: Customize the theme (103)
-      theme: ThemeData.light(useMaterial3: true),
     );
   }
 }
-
-// TODO: Build a Shrine Theme (103)
-// TODO: Build a Shrine Text Theme (103)

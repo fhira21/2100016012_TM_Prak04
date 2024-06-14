@@ -182,7 +182,7 @@ class _RegisterFormState extends State {
                       Navigator.pushReplacementNamed(context, '/login');
                     },
                     child: Text(
-                      'Sign Up',
+                      'Login',
                       style: TextStyle(
                         color: Colors.blue,
                         decoration: TextDecoration.underline,

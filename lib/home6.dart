@@ -3,11 +3,11 @@ import 'package:intl/intl.dart';
 
 import 'model/product.dart';
 import 'model/products_repository.dart';
+import 'supplemental/asymmetric_view.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage2 extends StatelessWidget {
+  const HomePage2({Key? key}) : super(key: key);
 
-  // Fungsi untuk membangun koleksi kartu
   List<Card> _buildGridCards(BuildContext context) {
     List<Product> products = ProductsRepository.loadProducts(Category.all);
 
@@ -22,7 +22,10 @@ class HomePage extends StatelessWidget {
     return products.map((product) {
       return Card(
         clipBehavior: Clip.antiAlias,
-        child: Column(
+        // TODO: Adjust card heights (103)
+        elevation: 0.0,
+        child: Column( 
+          // TODO: Center items on the card (103)
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             AspectRatio(
@@ -37,17 +40,23 @@ class HomePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // TODO: Align labels to the bottom and center (103)
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  // TODO: Change innermost Column (103)
                   children: <Widget>[
+                    // TODO: Handle overflowing labels (103)
                     Text(
                       product.name,
-                      style: theme.textTheme.headlineLarge,
+                      style: theme.textTheme.labelLarge,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
-                    const SizedBox(height: 8.0),
+                    const SizedBox(height: 4.0),
                     Text(
                       formatter.format(product.price),
-                      style: theme.textTheme.bodyLarge,
+                      style: theme.textTheme.titleSmall,
                     ),
                   ],
                 ),
@@ -59,23 +68,26 @@ class HomePage extends StatelessWidget {
     }).toList();
   }
 
+  // TODO: Add a variable for Category (104)
   @override
   Widget build(BuildContext context) {
+    // TODO: Return an AsymmetricView (104)
+    // TODO: Pass Category variable to AsymmetricView (104)
     return Scaffold(
       appBar: AppBar(
-         backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         leading: Builder(
-          builder: (BuildContext context) {
+          builder: (BuildContext context){
             return IconButton(
               icon: const Icon(
                 Icons.menu,
                 semanticLabel: 'menu',
               ),
               onPressed: () {
-                Scaffold.of(context).openDrawer(); // Membuka drawer saat tombol menu diklik
+                Scaffold.of(context).openDrawer();
               },
             );
-          },
+        }
         ),
         title: const Text('<- Menu_Fhira Triana Maulani'),
         actions: <Widget>[
@@ -84,18 +96,14 @@ class HomePage extends StatelessWidget {
               Icons.search,
               semanticLabel: 'search',
             ),
-            onPressed: () {
-              print('Search button');
-            },
+            onPressed: () {},
           ),
           IconButton(
             icon: const Icon(
               Icons.tune,
               semanticLabel: 'filter',
             ),
-            onPressed: () {
-              print('Filter button');
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -110,7 +118,7 @@ class HomePage extends StatelessWidget {
               child: Text(
                 'Menu',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.surface,
                   fontSize: 24,
                 ),
               ),
@@ -146,11 +154,8 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        padding: const EdgeInsets.all(16.0),
-        childAspectRatio: 8.0 / 9.0,
-        children: _buildGridCards(context),
+      body: AsymmetricView(
+        products: ProductsRepository.loadProducts(Category.all),
       ),
       resizeToAvoidBottomInset: false,
     );
