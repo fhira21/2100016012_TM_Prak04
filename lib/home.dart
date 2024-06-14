@@ -50,14 +50,14 @@ class HomePage extends StatelessWidget {
                     // Tampilkan nama produk
                     Text(
                       product.name,
-                      style: theme.textTheme.headline6,
+                      style: theme.textTheme.headlineLarge,
                       maxLines: 1,
                     ),
                     const SizedBox(height: 8.0),
                     // Tampilkan harga produk dengan formatter yang telah dibuat
                     Text(
                       formatter.format(product.price),
-                      style: theme.textTheme.subtitle1,
+                      style: theme.textTheme.bodyLarge,
                     ),
                   ],
                 ),

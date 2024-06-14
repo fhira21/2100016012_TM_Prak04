@@ -150,7 +150,7 @@ class _RegisterFormState extends State {
                 child: ElevatedButton(
                   onPressed: () {
                     // Navigasi ke halaman Home ketika tombol "Register" ditekan
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/login');
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.blue), // Warna latar belakang

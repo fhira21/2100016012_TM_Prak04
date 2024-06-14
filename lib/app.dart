@@ -10,7 +10,7 @@ class ShrineApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shrine',
+      title: 'Prak 4&5',
       initialRoute: '/login',
       routes: {
         '/login': (BuildContext context) => const LoginPage(),

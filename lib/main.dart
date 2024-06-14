@@ -25,7 +25,7 @@ class ShrineApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shrine',
+      title: 'Prak 4&5',
       // Tambahkan rute navigasi untuk halaman registrasi
       initialRoute: '/register',
       routes: {
